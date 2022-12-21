@@ -8,6 +8,7 @@ const groceriesRouter=require('./routes/groceries.js')
 const supermarketRouter=require('./routes/market.js');
 const authRoute=require('./routes/auth.js');
 const cookie=require('./cookies');
+const acccreate=require('./routes/accountcreation')
 //const sessionpar=require('./session');
 
 require('./Database/connect.js');
@@ -19,6 +20,7 @@ app.get('/',(req,res)=>{
     res.send("hello world")
 })
 
+
 app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(session({
@@ -29,6 +31,7 @@ app.use(session({
     //store
 }));
 //app.use(sessionpar);
+app.use(acccreate);
 app.use(authRoute);
 app.use(cookie);
 app.use(groceriesRouter);
